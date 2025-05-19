@@ -15,6 +15,8 @@ PEXELS_API_KEY = os.getenv('PEXELS_API_KEY', '')
 def get_resized_image(width: int, height: int):
     orientation = 'square'
     keyword = request.args.get('k')
+    width = int(width)
+    height = int(height)
     if width > height:
         orientation = 'landscape'
     elif width < height:
