@@ -11,12 +11,10 @@ app = Flask(__name__)
 PEXELS_API_KEY = os.getenv('PEXELS_API_KEY', '')
 
 
-@app.route('/', methods=['GET'])
-def get_resized_image():
+@app.route('/<width>/<height>/', methods=['GET'])
+def get_resized_image(width: int, height: int):
     orientation = 'square'
     keyword = request.args.get('k')
-    width = request.args.get('w', 200, type=int)
-    height = request.args.get('h', 300, type=int)
     if width > height:
         orientation = 'landscape'
     elif width < height:
